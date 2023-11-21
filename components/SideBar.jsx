@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { TfiCup } from "react-icons/tfi";
 import { RxDiscordLogo } from "react-icons/rx";
 import { MdShareLocation } from "react-icons/md";
@@ -24,19 +24,27 @@ export default function SideBar() {
     },
   ];
 
+  const [activeLink, setActiveLink] = useState("Browse");
+
   const router = useRouter();
 
   const handleButtonClick = (pathLink) => {
     router.push(pathLink);
+    setActiveLink(pathLink);
   };
+
   return (
     <div className='py-4 flex flex-col gap-4'>
       {pageLinks.map((path, i) => {
         return (
           <button
             key={i}
-            onClick={() => handleButtonClick(path.pathLink)}
-            className='bg-slate-200 items-center w-full rounded-md px-3 py-3 flex gap-4'
+            onClick={() => handleButtonClick(path.pathLink, path.pathTitle)}
+            className={`${
+              activeLink === path.pathTitle
+                ? "bg-slate-200"
+                : "hover:bg-slate-200"
+            } items-center w-full rounded-md px-3 py-3 flex gap-4`}
           >
             <path.pathIcon className='w-5 h-5' />
             {path.pathTitle}

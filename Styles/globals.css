@@ -16,3 +16,7 @@
     }
   }
 }
+
+.bg-radial-gradient {
+  background-image: radial-gradient(circle, #0c4a6e, #082f49, #111827);
+}
