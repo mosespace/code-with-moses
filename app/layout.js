@@ -1,7 +1,8 @@
 import "../Styles/globals.css";
 import { Raleway } from "next/font/google";
-import NavBar from "@/components/NavBar";
-import SideBar from "@/components/Sidebar";
+import NavBar from "@/Components/NavBar";
+import SideBar from "@/Components/Sidebar";
+// import NavBar from "../components/NavBar";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
