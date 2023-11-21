@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 export default function SideBar() {
   const pageLinks = [
-    { pathTitle: "Browse", pathIcon: MdShareLocation, pathLink: "/browse" },
+    { pathTitle: "Browse", pathIcon: MdShareLocation, pathLink: "/" },
     { pathTitle: "Leaderboard", pathIcon: TfiCup, pathLink: "/leaderboard" },
     { pathTitle: "Discord", pathIcon: RxDiscordLogo, pathLink: "/discord" },
     {
