@@ -1,11 +1,11 @@
 import React from "react";
-import Discord from "../../Components/Discord";
+import Common from "../../Components/(mentorship-and-discord)/Common";
 import { RiDiscordLine } from "react-icons/ri";
 
 export default function page() {
   return (
     <div className='bg-radial-gradient bg-cover flex items-center justify-center text-white h-full'>
-      <Discord
+      <Common
         title='Discord Community'
         description={[
           "Join the Discord community to chat with other students, ",
