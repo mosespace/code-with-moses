@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
             <div className='fixed top-0 bottom-0 left-0 overflow-y-auto no-scrollbar right-0 pt-20 w-[20%] border-r border-slate-300 bg-white py-[1.1rem] px-5 text-black'>
               <SideBar />
             </div>
-            <div className='bg-slate-50 pt-20 ml-[20%] w-full'>{children}</div>
+            <div className='bg-slate-50 pt-19 ml-[20%] w-full'>{children}</div>
           </div>
         </div>
       </body>
