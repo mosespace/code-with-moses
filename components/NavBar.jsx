@@ -5,7 +5,7 @@ import MyImage from "../public/mosespace.jpg";
 
 export default function NavBar() {
   return (
-    <nav className='flex fixed top-0 left-0 right-0 bg-white items-center gap-[8rem] py-[1.1rem] px-8 border-b border-slate-300 w-full'>
+    <nav className='flex fixed top-0 left-0 right-0 z-[230] bg-white items-center gap-[8rem] py-[1.1rem] px-8 border-b border-slate-300 w-full'>
       <div className='font-semibold text-lg tracking-wide items-center flex gap-3'>
         <Image
           width={400}
