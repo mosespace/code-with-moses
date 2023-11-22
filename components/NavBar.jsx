@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import SearchForm from "./SearchForm";
 import { FiLogIn } from "react-icons/fi";
-import { GoSearch } from "react-icons/go";
 import MyImage from "../public/mosespace.jpg";
 
 export default function NavBar() {
@@ -18,16 +18,7 @@ export default function NavBar() {
         <h2>CodeWithMoses</h2>
       </div>
       {/* Search Form */}
-      <div className='flex justify-start items-center relative w-full'>
-        <input
-          className='text-sm leading-none text-left text-gray-600 px-4 py-3 w-full border rounded-md border-gray-300  outline-none'
-          type='text'
-          placeholder='Search'
-        />
-        <div className='absolute right-3 z-10 cursor-pointer'>
-          <GoSearch className='w-6 h-6 text-gray-600' />
-        </div>
-      </div>
+      <SearchForm />
 
       {/* Login button */}
       <button className='flex items-center gap-1 px-2 py-1 border border-slate-300 rounded-md font-semibold'>
