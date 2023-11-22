@@ -37,6 +37,7 @@ export default function SideBar() {
   const handleButtonClick = (pathLink) => {
     router.push(pathLink);
     setActiveLink(pathLink);
+    handleCloseToggle;
   };
 
   return (
@@ -74,7 +75,13 @@ export default function SideBar() {
             return (
               <button
                 key={i}
-                onClick={() => handleButtonClick(path.pathLink, path.pathTitle)}
+                onClick={() =>
+                  handleButtonClick(
+                    path.pathLink,
+                    path.pathTitle,
+                    handleCloseToggle
+                  )
+                }
                 className={`${
                   activeLink === path.pathTitle
                     ? "bg-slate-200"

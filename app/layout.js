@@ -18,17 +18,17 @@ export default function RootLayout({ children }) {
       <SideBarProvider>
         <body className={raleway.className}>
           <NavBar />
-          <div className='flex h-screen w-screen overflow-x-hidden'>
+          <div className='flex flex-grow h-screen w-screen overflow-x-hidden'>
             <div className='flex w-full'>
               <div className=''>
                 <SideBar />
               </div>
-              <div className='bg-slate-50 pt-[4.5rem] lg:ml-[20%] w-full'>
+              <div className='pt-[4.5rem] lg:ml-[20%] flex-grow w-full min-h-full'>
                 {children}
-                <Footer />
               </div>
             </div>
           </div>
+          <Footer />
         </body>
       </SideBarProvider>
     </html>

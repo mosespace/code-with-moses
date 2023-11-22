@@ -16,7 +16,7 @@ export default function Footer() {
     },
   ];
   return (
-    <footer className='bg-white overflow-hidden absolute right-0 left-0 bottom-0 lg:ml-[20%] flex flex-col gap-3 lg:flex-row justify-center lg:justify-between lg:items-center lg:gap-[8rem] py-[1.4rem] px-8 text-slate-500 text-xs'>
+    <footer className='bg-white overflow-hidden lg:absolute lg:right-0 lg:left-0 lg:bottom-0 lg:ml-[20%] flex flex-col gap-3 lg:flex-row justify-center lg:justify-between lg:items-center lg:gap-[8rem] py-[1.4rem] px-8 text-slate-500 text-xs'>
       <div className='font-semibold tracking-wide items-center flex gap-3'>
         <h2>© 2023 ENRA d.o.o. All rights reserved.</h2>
       </div>
