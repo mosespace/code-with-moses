@@ -25,9 +25,7 @@ export default function RootLayout({ children }) {
               </div>
               <div className='bg-slate-50 pt-[4.5rem] lg:ml-[20%] w-full'>
                 {children}
-                <div className='bg-white absolute right-0 left-0 bottom-0 ml-[20%]'>
-                  {/* <Footer /> */}
-                </div>
+                <Footer />
               </div>
             </div>
           </div>
