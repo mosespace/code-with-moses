@@ -19,10 +19,10 @@ export default function NavBar() {
             width={400}
             height={400}
             src={MyImage}
-            className='w-[9%] h-auto object-cover rounded-full'
+            className='lg:w-[15%] w-[9%] h-auto object-cover rounded-full'
             alt='code with moses | Kampala Uganda Website Developer'
           />
-          <h2>CodeWithMoses</h2>
+          <h2 className="font-bold">CodeWithMoses</h2>
         </div>
         {/* Search Form */}
         <SearchForm />

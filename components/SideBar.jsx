@@ -61,7 +61,7 @@ export default function SideBar() {
                 width={400}
                 height={400}
                 src={MyImage}
-                className='w-[7%] h-auto object-cover rounded-full'
+                className='w-[15%] h-auto object-cover rounded-full'
                 alt='code with moses | Kampala Uganda Website Developer'
               />
               <h2>CodeWithMoses</h2>
