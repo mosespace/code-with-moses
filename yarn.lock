@@ -117,6 +117,13 @@
   dependencies:
     tslib "^2.4.0"
 
+"@vidstack/react@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@vidstack/react/-/react-1.6.1.tgz#cceafff619e8360611532f065174b7948b28ad98"
+  integrity sha512-ABWEBxrgl6NaA0F5nXmbMgydnhNL1Wx1ta6b748guHqcjW+vjNgjI4mRGxUKoglBaVNnkswxe8icctDpSZ7GmQ==
+  dependencies:
+    media-captions "^1.0.1"
+
 any-promise@^1.0.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/any-promise/-/any-promise-1.3.0.tgz#abc6afeedcea52e809cdc0376aed3ce39635d17f"
@@ -427,6 +434,11 @@ loose-envify@^1.1.0, loose-envify@^1.4.0:
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
+
+media-captions@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/media-captions/-/media-captions-1.0.2.tgz#90a6595c3de0859308e996d8b151a1f3bab9e242"
+  integrity sha512-QxAFc+XTGZeMx+ZvLtMxEDgAjd0kr1LJ2NekLr1cw/UKENOxK7B9g6HwtuTQzCXxmb4Dknd4T8M7FOqqCK9buA==
 
 memoize-one@^5.1.1:
   version "5.2.1"
