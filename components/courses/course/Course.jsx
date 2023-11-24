@@ -21,10 +21,10 @@ export default function Course() {
       </div>
 
       {/* Social Media Buttons */}
-      <div className='flex flex-wrap lg:flex-row gap-4 justify-between text-black pb-8 lg:py-0'>
+      <div className='flex flex-col lg:flex-row gap-4 justify-between text-black pb-8 lg:py-0'>
         <Link
           href='/discord'
-          className='group py-4 px-[1.5rem] lg:px-[3.3rem] border text-slate-200 border-slate-200 rounded-md flex flex-col gap-2 items-center '
+          className='group py-4 px-[1.5rem] lg:px-[3.3rem] border border-slate-200 rounded-md flex flex-col gap-2 items-center '
         >
           <BsGithub className='w-8 h-8 text-black group-hover:opacity-50 group-hover:transition-all' />
           <span className='group-hover:text-slate-500 group-hover:transition-all'>
