@@ -24,7 +24,7 @@ export default function Course() {
       <div className='flex flex-col lg:flex-row gap-4 justify-between text-black pb-8 lg:py-0'>
         <Link
           href='/discord'
-          className='group py-4 px-[1.5rem] lg:px-[3.3rem] border border-slate-200 rounded-md flex flex-col gap-2 items-center '
+          className='group py-4 px-[1.5rem] lg:px-[3.3rem] border border-slate-200 rounded-md flex lg:flex-col  justify-center lg:justify-normal lg:gap-2 gap-8 items-center'
         >
           <BsGithub className='w-8 h-8 text-black group-hover:opacity-50 group-hover:transition-all' />
           <span className='group-hover:text-slate-500 group-hover:transition-all'>
@@ -33,7 +33,7 @@ export default function Course() {
         </Link>
         <Link
           href='/discord'
-          className='group py-4 px-[1.5rem] lg:px-[3.3rem] border border-slate-200 rounded-md flex flex-col gap-2 items-center'
+          className='group py-4 px-[1.5rem] lg:px-[3.3rem] border border-slate-200 rounded-md flex lg:flex-col  justify-center lg:justify-normal lg:gap-2 gap-8 items-center'
         >
           <BsDiscord className='text-indigo-500  w-8 h-8 group-hover:opacity-50 group-hover:transition-all' />
           <span className='group-hover:text-slate-500 group-hover:transition-all'>
@@ -42,7 +42,7 @@ export default function Course() {
         </Link>
         <Link
           href='/discord'
-          className='group py-4 px-[1.5rem] lg:px-[3.3rem] border border-slate-200 rounded-md flex flex-col gap-2 items-center'
+          className='group py-4 px-[1.5rem] lg:px-[3.3rem] border border-slate-200 rounded-md flex lg:flex-col  justify-center lg:justify-normal lg:gap-2 gap-8 items-center'
         >
           <BsYoutube className='text-red-500 w-8 h-8 group-hover:opacity-50 group-hover:transition-all' />
           <span className='group-hover:text-slate-500 group-hover:transition-all'>
