@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
-import MyImage from "../public/mosespace.jpg";
+import MyImage from "../../public/mosespace.jpg";
 
 export default function Auth() {
   return (

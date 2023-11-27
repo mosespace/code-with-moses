@@ -4,8 +4,8 @@ import Image from "next/image";
 import SearchForm from "./SearchForm";
 import { FiLogIn } from "react-icons/fi";
 import { IoMenu, IoClose } from "react-icons/io5";
-import MyImage from "../public/mosespace.jpg";
-import { useSideBar } from "../Context/Context";
+import MyImage from "../../public/mosespace.jpg";
+import { useSideBar } from "../../Context/Context";
 
 export default function NavBar() {
   const { handleToggle, handleCloseToggle, isOpen } = useSideBar();
@@ -22,7 +22,7 @@ export default function NavBar() {
             className='lg:w-[15%] w-[9%] h-auto object-cover rounded-full'
             alt='code with moses | Kampala Uganda Website Developer'
           />
-          <h2 className="font-bold">CodeWithMoses</h2>
+          <h2 className='font-bold'>CodeWithMoses</h2>
         </div>
         {/* Search Form */}
         <SearchForm />
