@@ -1,6 +1,6 @@
 import React from "react";
-import Common from "../../Components/(mentorship-and-discord)/Common";
 import { RiDiscordLine } from "react-icons/ri";
+import Common from "../../Components/Common";
 
 export default function page() {
   return (

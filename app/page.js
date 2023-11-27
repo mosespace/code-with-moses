@@ -2,6 +2,7 @@ import Image from "next/image";
 import Courses from "../Components/courses/Courses";
 import SearchForm from "../Components/SearchForm";
 import FilterBtns from "../Components/filter buttons/FilterBtns";
+// import FilterBtns from "@/Components/filter buttons/FilterBtns";
 
 export default function Home() {
   return (
