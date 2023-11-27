@@ -1,6 +1,6 @@
-import Courses from "./components/Courses";
+import Courses from "./components/courses/Courses";
 import SearchForm from "./components/SearchForm";
-import FilterBtns from "./components/FilterBtns";
+import FilterBtns from "./components/filter buttons/FilterBtns";
 
 export default function Home() {
   return (
