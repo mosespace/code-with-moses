@@ -2,9 +2,9 @@
 import { TfiCup } from "react-icons/tfi";
 import { IoClose } from "react-icons/io5";
 import { useRouter } from "next/navigation";
-import MyImage from "../public/mosespace.jpg";
+import MyImage from "../../public/mosespace.jpg";
 import { RxDiscordLogo } from "react-icons/rx";
-import { useSideBar } from "../Context/Context";
+import { useSideBar } from "../../Context/Context";
 import { MdShareLocation } from "react-icons/md";
 import React, { useEffect, useState } from "react";
 import { IoMailUnreadOutline } from "react-icons/io5";
@@ -61,7 +61,7 @@ export default function SideBar() {
                 width={400}
                 height={400}
                 src={MyImage}
-                className='w-[7%] h-auto object-cover rounded-full'
+                className='w-[15%] h-auto object-cover rounded-full'
                 alt='code with moses | Kampala Uganda Website Developer'
               />
               <h2>CodeWithMoses</h2>
