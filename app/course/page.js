@@ -2,9 +2,9 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import BurnerOne from "../../public/demo.jpg";
-import Video from "../../Components/courses/course/Video";
-import Course from "../../Components/courses/course/Course";
-import Description from "../../Components/courses/course/Description";
+import Video from "../components/courses/course/Video";
+import Course from "../components/courses/course/Course";
+import Description from "../components/courses/course/Description";
 
 export default function page() {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
-import Common from "../../Components/(mentorship-and-discord)/Common";
 import { HiOutlineAcademicCap } from "react-icons/hi2";
+import Common from "../components/(mentorship-and-discord)/Common";
 
 export default function page() {
   return (

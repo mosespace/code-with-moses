@@ -1,6 +1,5 @@
 import React from "react";
-import Auth from "../../Components/Auth";
-
+import Auth from "../components/Auth";
 export default function page() {
   return (
     <div>
