@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import Demo from "../../public/demo.jpg";
-import Demo2 from "../../public/demo2.jpg";
+import Demo2 from "../../../public/demo2.jpg";
 import { LuBookOpen } from "react-icons/lu";
 
 export default function Courses() {
