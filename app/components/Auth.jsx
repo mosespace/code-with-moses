@@ -42,9 +42,8 @@ export default function Auth() {
                         toast.loading("Logging You In...");
 
                         // Sign in with the specified provider
-                        await signIn(provider, {
-                          callbackUrl: "http://localhost:3000",
-                        });
+                        await signIn();
+
                         toast.success("Login was successful");
 
                         // Show success toast

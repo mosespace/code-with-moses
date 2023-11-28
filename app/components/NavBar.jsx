@@ -3,19 +3,19 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import SearchForm from "./SearchForm";
-import { FiLogIn } from "react-icons/fi";
-import { signOut, useSession } from "next-auth/react";
 import MyImage from "../../public/mosespace.jpg";
+import toast, { Toaster } from "react-hot-toast";
 import { IoMenu, IoClose } from "react-icons/io5";
 import { Dropdown, Avatar } from "flowbite-react";
 import { useSideBar } from "../../Context/Context";
-import toast, { Toaster } from "react-hot-toast";
+import { FiLogIn, FiSettings } from "react-icons/fi";
+import { signOut, useSession } from "next-auth/react";
 
 export default function NavBar() {
-  const { data } = useSession();
+  const { data: session, status } = useSession();
 
   const { handleToggle, handleCloseToggle, isOpen } = useSideBar();
-  console.log(data);
+  // console.log(session);
   return (
     <>
       {/* Desktop NavBar */}
@@ -34,14 +34,14 @@ export default function NavBar() {
         <SearchForm />
 
         {/* Login button */}
-        {data ? (
+        {session ? (
           <>
             <Dropdown
               label={
                 <Avatar
-                  className='w-32 p-1'
+                  className='w-14'
                   alt='User settings'
-                  img={data.user.image}
+                  img={session.user.image}
                   rounded
                   bordered
                 />
@@ -49,27 +49,25 @@ export default function NavBar() {
               arrowIcon={false}
               inline
             >
-              <Dropdown.Header>
-                <span className='block text-sm'>{data.user.name}</span>
+              <Dropdown.Header className='w-56'>
+                <span className='block text-sm'>
+                  Hello <span className='font-bold'>{session.user.name}</span>
+                </span>
                 <span className='block truncate text-sm font-medium'>
-                  {data.user.ema}
+                  {session.user.email}
                 </span>
               </Dropdown.Header>
-              <Dropdown.Item>Dashboard</Dropdown.Item>
-              <Dropdown.Item>Settings</Dropdown.Item>
-              <Dropdown.Item>Earnings</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item>Settings</Dropdown.Item>
+              <Dropdown.Item className='flex gap-2'>
+                <FiSettings /> Settings
+              </Dropdown.Item>
               <Dropdown.Item
+                className='flex gap-2'
                 onClick={async () => {
                   try {
-                    await signOut(); // Perform sign-out
+                    await signOut();
 
                     // Show success toast
                     toast.success("You have been signed out");
-
-                    // Optionally, redirect to another page
-                    // router.push("/"); // Import useRouter if needed
                   } catch (error) {
                     // Handle sign-out error
                     console.error("Sign-out error:", error);
@@ -79,6 +77,7 @@ export default function NavBar() {
                   }
                 }}
               >
+                <FiLogIn />
                 Log out
               </Dropdown.Item>
             </Dropdown>
@@ -105,13 +104,65 @@ export default function NavBar() {
         </button>
 
         {/* Login button */}
-        <Link
-          href='/login'
-          className='flex items-center gap-2 px-2 py-1 border border-slate-300 rounded-md font-semibold'
-        >
-          <FiLogIn className='w-5 h-5' />
-          <span>Login</span>
-        </Link>
+        {session ? (
+          <>
+            <Dropdown
+              label={
+                <Avatar
+                  className='w-14'
+                  alt='User settings'
+                  img={session.user.image}
+                  rounded
+                  bordered
+                />
+              }
+              arrowIcon={false}
+              inline
+            >
+              <Dropdown.Header className='w-56'>
+                <span className='block text-sm'>
+                  Hello <span className='font-bold'>{session.user.name}</span>
+                </span>
+                <span className='block truncate text-sm font-medium'>
+                  {session.user.email}
+                </span>
+              </Dropdown.Header>
+              <Dropdown.Item className='flex gap-2'>
+                <FiSettings /> Settings
+              </Dropdown.Item>
+              <Dropdown.Item
+                className='flex gap-2'
+                onClick={async () => {
+                  try {
+                    await signOut();
+
+                    // Show success toast
+                    toast.success("You have been signed out");
+                  } catch (error) {
+                    // Handle sign-out error
+                    console.error("Sign-out error:", error);
+
+                    // Show error toast
+                    toast.error("Error signing out");
+                  }
+                }}
+              >
+                <FiLogIn />
+                Log out
+              </Dropdown.Item>
+            </Dropdown>
+          </>
+        ) : (
+          <>
+            <Link
+              href='/login'
+              className='flex items-center gap-2 px-2 py-1 border border-slate-300 rounded-md font-semibold'
+            >
+              <FiLogIn className='w-5 h-5' />
+              <span>Login</span>
+            </Link>
+          </>
+        )}
       </nav>
       <Toaster />
     </>
