@@ -9,6 +9,7 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  secret: process.env.JWT_SECRETE,
 };
 
 const handler = NextAuth(authOptions);
