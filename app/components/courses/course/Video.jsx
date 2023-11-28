@@ -13,7 +13,6 @@ export default function Video() {
         aspectRatio='16/9'
         title='Sprite Fight'
         controls
-        autoplay
         src='https://www.youtube.com/watch?v=7rOMr_dz5so&pp=ygUSbmFuYSBqb3NodWEgYmFyYWth'
       >
         <MediaProvider />

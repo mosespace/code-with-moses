@@ -4,30 +4,36 @@ import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { FaGithub } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import { IoCloseSharp } from "react-icons/io5";
 import toast, { Toaster } from "react-hot-toast";
 import MyImage from "../../public/mosespace.jpg";
 
-export default function Auth() {
+export default function Auth({ toggleSignInOff }) {
   const router = useRouter();
 
   return (
-    <div className='h-screen absolute top-0 bottom-0 left-0 right-0 z-[230] w-screen overflow-hidden'>
+    <div className='h-screen bg-white/30 absolute top-0 bottom-0 left-0 right-0 z-[250] w-screen'>
       {/* <!-- modal --> */}
-      <div className='fixed grid place-items-center backdrop-blur-sm top-0 right-0 left-0 z-50 w-full inset-0 h-modal h-full justify-center items-center'>
+      <div className='fixed grid place-items-center backdrop-blur-sm top-0 right-0 left-0 z-50 w-full inset-0 h-modal justify-center items-center'>
         <div className='relative container m-auto px-6'>
           <div className='m-auto md:w-7/12'>
             <div className='rounded-xl bg-slate-950 shadow-xl'>
               <div className='p-8'>
                 <div className='space-y-4'>
-                  <div className='font-semibold text-lg tracking-wide items-center flex gap-3'>
-                    <Image
-                      width={400}
-                      height={400}
-                      src={MyImage}
-                      className='w-[9%] h-auto object-cover rounded-full'
-                      alt='code with moses | Kampala Uganda Website Developer'
-                    />
-                    <h2 className='font-bold text-white'>CodeWithMoses</h2>
+                  <div className='font-semibold text-lg tracking-wide flex items-center justify-between'>
+                    <div className='flex gap-3'>
+                      <Image
+                        width={400}
+                        height={400}
+                        src={MyImage}
+                        className='w-[9%] h-auto object-cover rounded-full'
+                        alt='code with moses | Kampala Uganda Website Developer'
+                      />
+                      <h2 className='font-bold text-white'>CodeWithMoses</h2>
+                    </div>
+                    <button onClick={toggleSignInOff} className='text-white'>
+                      <IoCloseSharp className='w-7 h-7' />
+                    </button>
                   </div>
                   <h2 className='mb-8 text-2xl text-white font-bold'>
                     Log in to unlock the <br />
@@ -36,17 +42,21 @@ export default function Auth() {
                 </div>
                 <div className='mt-10 grid space-y-4'>
                   <button
-                    onClick={async (provider) => {
+                    onClick={async () => {
                       try {
                         // Show loading toast
                         toast.loading("Logging You In...");
 
                         // Sign in with the specified provider
-                        await signIn();
+                        await signIn("github", {
+                          callbackUrl: process.env.NEXT_URL,
+                        });
 
-                        toast.success("Login was successful");
+                        // Close the loading toast
+                        toast.dismiss(loadingToast);
 
                         // Show success toast
+                        toast.success("Login was successful");
                       } catch (error) {
                         // Handle errors here
                         console.error("Sign-in error:", error);

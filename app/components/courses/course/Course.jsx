@@ -1,8 +1,20 @@
-import React from "react";
+"use client";
 import Link from "next/link";
+import Auth from "../../Auth";
+import React, { useState } from "react";
+import { useSession } from "next-auth/react";
 import { BsGithub, BsDiscord, BsYoutube } from "react-icons/bs";
 
 export default function Course() {
+  const { data: session } = useSession();
+  const [signIn, setSignIn] = useState(false);
+
+  function handleSignIn() {
+    setSignIn(true);
+  }
+  function toggleSignInOff() {
+    setSignIn(false);
+  }
   return (
     // Enrollment Button
     <div className='flex flex-col gap-8 text-slate-50'>
@@ -12,13 +24,24 @@ export default function Course() {
           Track your progress, watch with subtitles, change quality & speed, and
           more.
         </p>
-        <Link
-          href='/enroll'
-          className='bg-slate-200 text-black font-bold text-center w-full rounded-md px-3 py-3 text-sm'
-        >
-          Enroll For Free
-        </Link>
+        {session ? (
+          <Link
+            href='/course/id'
+            className='bg-slate-200 text-black font-bold text-center w-full rounded-md px-3 py-3 text-sm'
+          >
+            Enroll For Free
+          </Link>
+        ) : (
+          <button
+            onClick={handleSignIn}
+            className='bg-slate-200 text-black font-bold text-center w-full rounded-md px-3 py-3 text-sm'
+          >
+            Enroll For Free
+          </button>
+        )}
       </div>
+
+      {signIn ? <Auth toggleSignInOff={toggleSignInOff} /> : ""}
 
       {/* Social Media Buttons */}
       <div className='flex flex-col lg:flex-row gap-4 justify-between text-black pb-8 lg:py-0'>

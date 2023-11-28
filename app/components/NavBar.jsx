@@ -1,8 +1,9 @@
 "use client";
-import React from "react";
+import Auth from "./Auth";
 import Link from "next/link";
 import Image from "next/image";
 import SearchForm from "./SearchForm";
+import React, { useState } from "react";
 import MyImage from "../../public/mosespace.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import { IoMenu, IoClose } from "react-icons/io5";
@@ -12,8 +13,15 @@ import { FiLogIn, FiSettings } from "react-icons/fi";
 import { signOut, useSession } from "next-auth/react";
 
 export default function NavBar() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
+  const [signIn, setSignIn] = useState(false);
 
+  function handleSignIn() {
+    setSignIn(true);
+  }
+  function toggleSignInOff() {
+    setSignIn(false);
+  }
   const { handleToggle, handleCloseToggle, isOpen } = useSideBar();
   // console.log(session);
   return (
@@ -83,13 +91,13 @@ export default function NavBar() {
             </Dropdown>
           </>
         ) : (
-          <Link
-            href='/login'
+          <button
+            onClick={handleSignIn}
             className='flex items-center gap-1 px-2 py-1 border border-slate-300 rounded-md font-semibold'
           >
             <FiLogIn />
             <span>Login</span>
-          </Link>
+          </button>
         )}
       </nav>
 
@@ -164,6 +172,7 @@ export default function NavBar() {
           </>
         )}
       </nav>
+      {signIn ? <Auth  toggleSignInOff={toggleSignInOff}/> : ""}
       <Toaster />
     </>
   );
