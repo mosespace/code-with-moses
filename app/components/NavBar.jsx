@@ -1,15 +1,20 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import SearchForm from "./SearchForm";
 import { FiLogIn } from "react-icons/fi";
-import { IoMenu, IoClose } from "react-icons/io5";
+import { useSession } from "next-auth/react";
 import MyImage from "../../public/mosespace.jpg";
+import { IoMenu, IoClose } from "react-icons/io5";
+import { Dropdown, Avatar } from "flowbite-react";
 import { useSideBar } from "../../Context/Context";
 
 export default function NavBar() {
+  const { data } = useSession();
+
   const { handleToggle, handleCloseToggle, isOpen } = useSideBar();
-  // console.log(isOpen);
+  console.log(data);
   return (
     <>
       {/* Desktop NavBar */}
@@ -28,10 +33,44 @@ export default function NavBar() {
         <SearchForm />
 
         {/* Login button */}
-        <button className='flex items-center gap-1 px-2 py-1 border border-slate-300 rounded-md font-semibold'>
-          <FiLogIn />
-          <span>Login</span>
-        </button>
+        {data ? (
+          <>
+            <Dropdown
+              label={
+                <Avatar
+                  className='w-32 p-1'
+                  alt='User settings'
+                  img={data.user.image}
+                  rounded
+                  bordered
+                />
+              }
+              arrowIcon={false}
+              inline
+            >
+              <Dropdown.Header>
+                <span className='block text-sm'>{data.user.name}</span>
+                <span className='block truncate text-sm font-medium'>
+                  {data.user.ema}
+                </span>
+              </Dropdown.Header>
+              <Dropdown.Item>Dashboard</Dropdown.Item>
+              <Dropdown.Item>Settings</Dropdown.Item>
+              <Dropdown.Item>Earnings</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item>Settings</Dropdown.Item>
+              <Dropdown.Item>Log out</Dropdown.Item>
+            </Dropdown>
+          </>
+        ) : (
+          <Link
+            href='/login'
+            className='flex items-center gap-1 px-2 py-1 border border-slate-300 rounded-md font-semibold'
+          >
+            <FiLogIn />
+            <span>Login</span>
+          </Link>
+        )}
       </nav>
 
       {/* Mobile NavBar */}
@@ -45,10 +84,13 @@ export default function NavBar() {
         </button>
 
         {/* Login button */}
-        <button className='flex items-center gap-2 px-2 py-1 border border-slate-300 rounded-md font-semibold'>
+        <Link
+          href='/login'
+          className='flex items-center gap-2 px-2 py-1 border border-slate-300 rounded-md font-semibold'
+        >
           <FiLogIn className='w-5 h-5' />
           <span>Login</span>
-        </button>
+        </Link>
       </nav>
     </>
   );
