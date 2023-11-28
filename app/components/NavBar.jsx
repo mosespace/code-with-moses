@@ -4,11 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import SearchForm from "./SearchForm";
 import { FiLogIn } from "react-icons/fi";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import MyImage from "../../public/mosespace.jpg";
 import { IoMenu, IoClose } from "react-icons/io5";
 import { Dropdown, Avatar } from "flowbite-react";
 import { useSideBar } from "../../Context/Context";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function NavBar() {
   const { data } = useSession();
@@ -59,7 +60,27 @@ export default function NavBar() {
               <Dropdown.Item>Earnings</Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item>Settings</Dropdown.Item>
-              <Dropdown.Item>Log out</Dropdown.Item>
+              <Dropdown.Item
+                onClick={async () => {
+                  try {
+                    await signOut(); // Perform sign-out
+
+                    // Show success toast
+                    toast.success("You have been signed out");
+
+                    // Optionally, redirect to another page
+                    // router.push("/"); // Import useRouter if needed
+                  } catch (error) {
+                    // Handle sign-out error
+                    console.error("Sign-out error:", error);
+
+                    // Show error toast
+                    toast.error("Error signing out");
+                  }
+                }}
+              >
+                Log out
+              </Dropdown.Item>
             </Dropdown>
           </>
         ) : (
@@ -92,6 +113,7 @@ export default function NavBar() {
           <span>Login</span>
         </Link>
       </nav>
+      <Toaster />
     </>
   );
 }

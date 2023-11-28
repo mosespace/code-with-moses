@@ -1,6 +1,6 @@
 "use client";
-import { createContext, useContext, useState } from "react";
 import { SessionProvider } from "next-auth/react";
+import { createContext, useContext, useState } from "react";
 
 //1) Creating the context----------------------------------------------------------------
 export const appContext = createContext();
