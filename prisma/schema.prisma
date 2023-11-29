@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Course {
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String
+  title       String
+  slug        String @unique
+  description String
+  imageUrl    String?
+  price       Float?
+  isPublished Boolean
+  attachments Attachment [] 
+  purchases   Purchase[] 
+  chapters    Chapter[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Attachment {
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  url       String
+  courseId  String @db.ObjectId
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model Purchase {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String
+  
+  courseId   String @db.ObjectId
+  course     Course   @relation(fields: [courseId], references: [id])
+  
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+model Chapter {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  courseId   String @db.ObjectId
+  course     Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  title      String
+  description String
+  videoUrl    String?
+  isPublished Boolean @default(false)
+  isPaid      Boolean @default(true)
+  userProgress UserProgress []
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+model UserProgress {
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId   String
+
+  chapterId String @db.ObjectId
+  chapter    Chapter   @relation(fields: [chapterId], references: [id])
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
