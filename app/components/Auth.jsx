@@ -49,7 +49,7 @@ export default function Auth({ toggleSignInOff }) {
 
                         // Sign in with the specified provider
                         await signIn("github", {
-                          callbackUrl: process.env.NEXT_URL,
+                          callbackUrl: process.env.NEXTAUTH_URL,
                         });
 
                         // Close the loading toast
