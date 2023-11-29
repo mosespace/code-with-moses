@@ -1,19 +1,23 @@
 "use client";
+import Image from "next/image";
+import React, { useState } from "react";
 import { TfiCup } from "react-icons/tfi";
 import { IoClose } from "react-icons/io5";
-import { useRouter } from "next/navigation";
-import MyImage from "../../public/mosespace.jpg";
 import { RxDiscordLogo } from "react-icons/rx";
-import { useSideBar } from "../../Context/Context";
+import MyImage from "../../public/mosespace.jpg";
 import { MdShareLocation } from "react-icons/md";
-import React, { useEffect, useState } from "react";
+import { useSideBar } from "../../Context/Context";
 import { IoMailUnreadOutline } from "react-icons/io5";
 import { HiOutlineAcademicCap } from "react-icons/hi2";
-import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
+import StudentSideBar from "./student/StudentSideBar";
 
 export default function SideBar() {
   const { handleCloseToggle, isOpen } = useSideBar();
-
+  const pathname = usePathname();
+  if (pathname === "/course/id") {
+    return <StudentSideBar />;
+  }
   const pageLinks = [
     { pathTitle: "Browse", pathIcon: MdShareLocation, pathLink: "/" },
     { pathTitle: "Leaderboard", pathIcon: TfiCup, pathLink: "/leaderboard" },

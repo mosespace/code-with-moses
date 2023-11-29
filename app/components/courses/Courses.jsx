@@ -1,9 +1,16 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
-import Demo2 from "../../../public/demo2.jpg";
+import { useEffect, useRef } from "react";
 import { LuBookOpen } from "react-icons/lu";
+import Demo2 from "../../../public/demo2.jpg";
 
 export default function Courses() {
+  const mainContainer = useRef(null);
+  // console.log(mainContainer);
+  const subContainer = useRef(null);
+  // console.log(subContainer);
+
   const course = [
     {
       courseImage: Demo2,
@@ -55,13 +62,41 @@ export default function Courses() {
     },
   ];
 
+  // useEffect(() => {
+  //   gsap.to(
+  //     mainContainer.current,
+  //     {
+  //       scrollTrigger: {
+  //         trigger: mainContainer.current,
+  //         toggleActions: "restart pause resume restart",
+  //       },
+  //       // opacity: 0,
+  //       duration: 3,
+  //       y: 400,
+  //     }
+  //     // {
+  //     //   opacity: 1,
+  //     //   y: 0,
+  //     //   duration: 1,
+  //     //   scrollTrigger: {
+  //     //     start: "top 10%",
+  //     //     end: "bottom 0",
+  //     //     scrub: 0.6,
+  //     //   },
+  //     // }
+  //   );
+  // }, []);
   return (
-    <div className='grid grid-cols-1 gap-2 lg:gap-1 lg:grid-cols-4'>
+    <div
+      // ref={mainContainer}
+      className='grid grid-cols-1 lg:mb-11 gap-2 lg:gap-1 lg:grid-cols-4'
+    >
       {course.map((course, i) => (
         <Link
           key={i}
           href='/course'
           className='flex flex-col justify-between hover:bg-slate-200 hover:transition-all px-4 py-3 rounded-md'
+          // ref={subContainer}
         >
           <div className='flex flex-col'>
             <Image
@@ -69,7 +104,7 @@ export default function Courses() {
               height={1280}
               src={course.courseImage}
               alt='Code With Moses'
-              className='h-2/3 object-center object-cover bg-red-700 rounded-md'
+              className='h-2/3 object-center object-cover bg-slate-300 rounded-md'
             />
             <div className='flex flex-col ga-2 mt-2'>
               <h3 className='font-semibold text-xl'>{course.courseName}</h3>

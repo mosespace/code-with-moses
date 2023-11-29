@@ -1,11 +1,12 @@
 "use client";
+import { SessionProvider } from "next-auth/react";
 import { createContext, useContext, useState } from "react";
 
 //1) Creating the context----------------------------------------------------------------
 export const appContext = createContext();
 
 //2) Creating the provider----------------------------------------------------------------
-export function SideBarProvider({ children }) {
+export function SideBarProvider({ children, session }) {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleToggle() {
@@ -16,9 +17,11 @@ export function SideBarProvider({ children }) {
   }
 
   return (
-    <appContext.Provider value={{ handleToggle, handleCloseToggle, isOpen }}>
-      {children}
-    </appContext.Provider>
+    <SessionProvider session={session}>
+      <appContext.Provider value={{ handleToggle, handleCloseToggle, isOpen }}>
+        {children}
+      </appContext.Provider>
+    </SessionProvider>
   );
 }
 
