@@ -1,11 +1,9 @@
 "use client";
-import gsap from "gsap";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { LuBookOpen } from "react-icons/lu";
 import Demo2 from "../../../public/demo2.jpg";
-import { ScrollSmoother, ScrollTrigger } from "gsap/all";
 
 export default function Courses() {
   const mainContainer = useRef(null);
@@ -63,8 +61,6 @@ export default function Courses() {
       coursePrice: "UGX 1,500,000",
     },
   ];
-
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
   // useEffect(() => {
   //   gsap.to(
