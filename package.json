@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^5.6.0",
     "@vidstack/react": "^1.6.1",
     "flowbite": "^2.2.0",
     "flowbite-react": "^0.7.0",
