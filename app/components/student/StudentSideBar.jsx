@@ -4,22 +4,19 @@ import React, { useState } from "react";
 import { TfiCup } from "react-icons/tfi";
 import { IoClose } from "react-icons/io5";
 import { RxDiscordLogo } from "react-icons/rx";
-import MyImage from "../../public/mosespace.jpg";
 import { MdShareLocation } from "react-icons/md";
-import { useSideBar } from "../../Context/Context";
+import MyImage from "../../../public/mosespace.jpg";
+import { useSideBar } from "../../../Context/Context";
 import { IoMailUnreadOutline } from "react-icons/io5";
 import { HiOutlineAcademicCap } from "react-icons/hi2";
-import { usePathname, useRouter } from "next/navigation";
-import StudentSideBar from "./student/StudentSideBar";
+import { useRouter } from "next/navigation";
+import Progress from "../Progress";
 
-export default function SideBar() {
+export default function StudentSideBar() {
   const { handleCloseToggle, isOpen } = useSideBar();
-  const pathname = usePathname();
-  if (pathname === "/course/id") {
-    return <StudentSideBar />;
-  }
+
   const pageLinks = [
-    { pathTitle: "Browse", pathIcon: MdShareLocation, pathLink: "/" },
+    { pathTitle: "Working", pathIcon: MdShareLocation, pathLink: "/" },
     { pathTitle: "Leaderboard", pathIcon: TfiCup, pathLink: "/leaderboard" },
     { pathTitle: "Discord", pathIcon: RxDiscordLogo, pathLink: "/discord" },
     {
@@ -34,7 +31,7 @@ export default function SideBar() {
     },
   ];
 
-  const [activeLink, setActiveLink] = useState("Browse");
+  const [activeLink, setActiveLink] = useState("Working");
 
   const router = useRouter();
 
@@ -59,22 +56,17 @@ export default function SideBar() {
             !isOpen ? "hidden lg:block" : "w-[80%]"
           } py-4 flex flex-col gap-4 fixed top-0 bottom-0 left-0 overflow-y-auto no-scrollbar right-0 pt-24 w-[20%] border-r border-slate-300 bg-white px-5 text-black`}
         >
-          <div className={`${isOpen ? "flex justify-between" : "hidden"}`}>
-            <div className='font-semibold text-lg tracking-wide items-center flex gap-3'>
-              <Image
-                width={400}
-                height={400}
-                src={MyImage}
-                className='w-[15%] h-auto object-cover rounded-full'
-                alt='code with moses | Kampala Uganda Website Developer'
-              />
-              <h2>CodeWithMoses</h2>
+          <div className='flex flex-col pt-2 border-b border-slate-300 w-full'>
+            <h2 className='font-bold px-5 flex items-center text-xl justify-between'>
+              Trello Clone
+              <button onClick={handleCloseToggle}>
+                <IoClose className='w-7 h-7' />
+              </button>
+            </h2>
+            <div className='px-5'>
+              <Progress />
             </div>
-            <button onClick={handleCloseToggle}>
-              <IoClose className='w-7 h-7' />
-            </button>
           </div>
-
           {pageLinks.map((path, i) => {
             return (
               <button
@@ -99,24 +91,32 @@ export default function SideBar() {
           })}
         </div>
       </div>
-
-      <div className='hidden py-4 lg:flex flex-col gap-4 fixed top-0 bottom-0 left-0 overflow-y-auto no-scrollbar right-0 pt-24 w-[20%] border-r border-slate-300 px-5 text-black'>
-        {pageLinks.map((path, i) => {
-          return (
-            <button
-              key={i}
-              onClick={() => handleButtonClick(path.pathLink, path.pathTitle)}
-              className={`${
-                activeLink === path.pathTitle
-                  ? "bg-slate-200"
-                  : "hover:bg-slate-200"
-              } items-center w-full rounded-md px-3 py-3 flex gap-4`}
-            >
-              <path.pathIcon className='w-5 h-5' />
-              {path.pathTitle}
-            </button>
-          );
-        })}
+      {/* Desktop */}
+      <div className='hidden z-[230] py-4 lg:flex flex-col gap-4 fixed top-0 bottom-0 left-0 overflow-y-auto no-scrollbar right-0  w-[20%] border-r border-slate-300  text-black b bg-white'>
+        <div className='flex flex-col pt-5 border-b border-slate-300 w-full'>
+          <h2 className='font-bold px-5'>Trello Clone</h2>
+          <div className='px-5'>
+            <Progress />
+          </div>
+        </div>
+        <div className='px-5'>
+          {pageLinks.map((path, i) => {
+            return (
+              <button
+                key={i}
+                onClick={() => handleButtonClick(path.pathLink, path.pathTitle)}
+                className={`${
+                  activeLink === path.pathTitle
+                    ? "bg-slate-200"
+                    : "hover:bg-slate-200"
+                } items-center w-full rounded-md px-3 py-3 flex gap-4`}
+              >
+                <path.pathIcon className='w-5 h-5' />
+                {path.pathTitle}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </>
   );
