@@ -7,9 +7,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRoles {
+  ADMIN
+  USER
+}
+
+model User {
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  role        UserRoles    @default(USER)
+  firstName   String
+  lastName    String
+  email       String
+  courses     Course[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
 model Course {
-  id  String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId      String
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  // userId      String
   title       String
   slug        String @unique
   description String
@@ -20,12 +36,14 @@ model Course {
   purchases   Purchase[] 
   chapters    Chapter[]
   tags        Tags[]
+  userId      String @db.ObjectId
+  user        User   @relation(fields: [userId], references: [id]) 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
 model Tags {
-  id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   courseId  String @db.ObjectId
   course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
@@ -34,7 +52,7 @@ model Tags {
 
 }
 model Attachment {
-  id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   url       String
   courseId  String @db.ObjectId
@@ -53,25 +71,23 @@ model Purchase {
   updatedAt  DateTime @updatedAt
 }
 model Chapter {
-  id         String  @id @default(auto()) @map("_id") @db.ObjectId
-  courseId   String @db.ObjectId
-  course     Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
-  title      String
-  description String
-  videoUrl    String?
-  isPublished Boolean @default(false)
-  isPaid      Boolean @default(true)
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  courseId     String @db.ObjectId
+  course       Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  title        String
+  description  String
+  videoUrl     String?
+  isPublished  Boolean @default(false)
+  isPaid       Boolean @default(true)
   userProgress UserProgress []
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 model UserProgress {
-  id  String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId   String
-
-  chapterId String @db.ObjectId
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String
+  chapterId  String @db.ObjectId
   chapter    Chapter   @relation(fields: [chapterId], references: [id])
-  
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
