@@ -1,10 +1,18 @@
-import CourseProgress from "@/app/components/student/CourseProgress";
+// import CreateCourseForm from "@/app/components/administrator/CreateCourseForm";
+import CreateForm from "@/app/components/administrator/CreateForm";
 import React from "react";
 
 export default function page() {
   return (
-    <div className='lg:py-8 lg:px-4 px-4'>
-      <CourseProgress />
+    <div className='lg:py-8 lg:px-4 px-4 py-10 flex items-start justify-center gap-4'>
+      {/* <div>
+        <span className='text-2xl font-bold'>
+          Key Hints On Creating the Courses, Chapter and The Attachments
+        </span>
+      </div> */}
+      <div className=''>
+        <CreateForm className='w-full' />
+      </div>
     </div>
   );
 }

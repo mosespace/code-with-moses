@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import SearchForm from "./SearchForm";
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
 import MyImage from "../../public/mosespace.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import { IoMenu, IoClose } from "react-icons/io5";
@@ -11,10 +12,11 @@ import { Dropdown, Avatar } from "flowbite-react";
 import { useSideBar } from "../../Context/Context";
 import { FiLogIn, FiSettings } from "react-icons/fi";
 import { signOut, useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
 
 export default function NavBar() {
   const { data: session } = useSession();
+  // console.log(session);
+
   const [signIn, setSignIn] = useState(false);
   const pathname = usePathname();
 
