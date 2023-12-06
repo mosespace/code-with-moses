@@ -70,6 +70,8 @@ export async function GET(request) {
     const courses = await db.course.findMany({
       include: {
         chapters: true,
+        attachments: true,
+        tags:true,
       },
     });
     // console.log(courses)
