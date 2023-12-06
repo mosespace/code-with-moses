@@ -61,7 +61,7 @@ export default function CreateForm({ courses, course }) {
         ) : displayedForm === "chapter" ? (
           <CreateChapterForm courses={courses} course={course} />
         ) : (
-          <CreateAttachmentForm courses={courses} />
+          <CreateAttachmentForm courses={courses} course={course}/>
         )}
       </div>
     </section>
