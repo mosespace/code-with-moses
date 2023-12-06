@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import { TbLayoutDashboard, TbClipboard, TbPencil } from "react-icons/tb";
 import CreateCourseForm from "./CreateCourseForm";
 import CreateChapterForm from "./CreateChapterForm";
+import CreateAttachmentForm from "./CreateAttachmentForm";
+import { TbLayoutDashboard, TbClipboard, TbPencil } from "react-icons/tb";
 
 export default function CreateForm({ courses, course }) {
   const [displayedForm, setDisplayedForm] = useState("course");
@@ -60,7 +61,7 @@ export default function CreateForm({ courses, course }) {
         ) : displayedForm === "chapter" ? (
           <CreateChapterForm courses={courses} course={course} />
         ) : (
-          <CreateCourseForm courses={courses} />
+          <CreateAttachmentForm courses={courses} />
         )}
       </div>
     </section>
