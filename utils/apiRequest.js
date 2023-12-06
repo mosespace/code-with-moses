@@ -9,7 +9,7 @@ export async function makePostRequest(
 ) {
   try {
     setLoading(true);
-    const baseUrl = process.env.NEXTAUTH_URL;
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
     const response = await fetch(`${baseUrl}/${endpoint}`, {
       method: "POST",
       headers: {
