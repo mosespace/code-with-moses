@@ -63,3 +63,26 @@ export async function POST(request) {
     );
   }
 }
+
+// Getting back the courses from MongoDB
+export async function GET(request) {
+  try {
+    const courses = await db.course.findMany({
+      include: {
+        chapters: true,
+      },
+    });
+    // console.log(courses)
+    return NextResponse.json(courses);
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: "Failed course",
+        error: error.message,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
+}
