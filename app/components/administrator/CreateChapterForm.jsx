@@ -9,8 +9,9 @@ import SubmitButton from "../Form/SubmitButton";
 import TextareaInput from "../Form/TextareaInput";
 import { makePostRequest } from "@/utils/apiRequest";
 
+
 export default function CreateChapterForm({ courses, course }) {
-  console.log(course);
+  // console.log(course);
   const {
     handleSubmit,
     register,
