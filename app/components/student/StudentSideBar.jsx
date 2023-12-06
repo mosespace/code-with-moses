@@ -113,6 +113,34 @@ export default function StudentSideBar() {
   ];
   return (
     <>
+      {/* Desktop */}
+      <div className='hidden z-[230] py-4 lg:flex flex-col gap-4 fixed top-0 bottom-0 left-0 overflow-y-auto no-scrollbar right-0  w-[20%] border-r border-slate-300  text-black b bg-white'>
+        <div className='flex flex-col pt-5 border-b border-slate-300 w-full'>
+          <h2 className='font-bold px-5'>Trello Clone</h2>
+          <div className='px-5'>
+            <Progress />
+          </div>
+        </div>
+        <div className='px-5'>
+          {pageLinks.map((path, i) => {
+            return (
+              <button
+                key={i}
+                onClick={() => handleButtonClick(path.pathLink, path.pathTitle)}
+                className={`${
+                  activeLink === path.pathTitle
+                    ? "bg-slate-200"
+                    : "hover:bg-slate-200"
+                } items-center w-full rounded-md px-3 py-3 flex gap-4`}
+              >
+                <path.pathIcon className='w-5 h-5' />
+                {path.pathTitle}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
       {/* MobileSideBar */}
       <div
         className={`${
@@ -161,33 +189,6 @@ export default function StudentSideBar() {
               );
             })}
           </div>
-        </div>
-      </div>
-      {/* Desktop */}
-      <div className='hidden z-[230] py-4 lg:flex flex-col gap-4 fixed top-0 bottom-0 left-0 overflow-y-auto no-scrollbar right-0  w-[20%] border-r border-slate-300  text-black b bg-white'>
-        <div className='flex flex-col pt-5 border-b border-slate-300 w-full'>
-          <h2 className='font-bold px-5'>Trello Clone</h2>
-          <div className='px-5'>
-            <Progress />
-          </div>
-        </div>
-        <div className='px-5'>
-          {pageLinks.map((path, i) => {
-            return (
-              <button
-                key={i}
-                onClick={() => handleButtonClick(path.pathLink, path.pathTitle)}
-                className={`${
-                  activeLink === path.pathTitle
-                    ? "bg-slate-200"
-                    : "hover:bg-slate-200"
-                } items-center w-full rounded-md px-3 py-3 flex gap-4`}
-              >
-                <path.pathIcon className='w-5 h-5' />
-                {path.pathTitle}
-              </button>
-            );
-          })}
         </div>
       </div>
     </>
