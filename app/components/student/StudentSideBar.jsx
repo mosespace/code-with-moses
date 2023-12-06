@@ -1,20 +1,10 @@
 "use client";
-import Image from "next/image";
-import React, { useState } from "react";
-import { TfiCup } from "react-icons/tfi";
-import { IoClose } from "react-icons/io5";
-import { RxDiscordLogo } from "react-icons/rx";
-import { MdShareLocation } from "react-icons/md";
-import MyImage from "../../../public/mosespace.jpg";
-import { useSideBar } from "../../../Context/Context";
-import {
-  IoMailUnreadOutline,
-  IoPlayCircleOutline,
-  IoPauseCircleOutline,
-} from "react-icons/io5";
-import { HiOutlineAcademicCap } from "react-icons/hi2";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 import Progress from "../Progress";
+import { IoClose } from "react-icons/io5";
+import { useRouter } from "next/navigation";
+import { useSideBar } from "../../../Context/Context";
+import { IoPlayCircleOutline, IoPauseCircleOutline } from "react-icons/io5";
 
 export default function StudentSideBar() {
   const { handleCloseToggle, isOpen } = useSideBar();
@@ -114,8 +104,8 @@ export default function StudentSideBar() {
   return (
     <>
       {/* Desktop */}
-      <div className='hidden z-[230] py-4 lg:flex flex-col gap-4 fixed top-0 bottom-0 left-0 overflow-y-auto no-scrollbar right-0  w-[20%] border-r border-slate-300  text-black b bg-white'>
-        <div className='flex flex-col pt-5 border-b border-slate-300 w-full'>
+      <div className='hidden z-[230] pb-4 lg:flex flex-col gap-4 fixed top-0 bottom-0 left-0 overflow-y-auto no-scrollbar right-0  w-[20%] border-r border-slate-300  text-black b bg-white'>
+        <div className='flex flex-col pt-5 border-b border-slate-300 w-full bg-white sticky top-0 left-0 right-[80%]'>
           <h2 className='font-bold px-5'>Trello Clone</h2>
           <div className='px-5'>
             <Progress />
