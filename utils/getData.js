@@ -1,6 +1,6 @@
 export async function getData(endpoint) {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    const baseUrl = process.env.NEXTAUTH_URL;
     const response = await fetch(`${baseUrl}/api/${endpoint}`, {
       cache: "no-store",
     });
