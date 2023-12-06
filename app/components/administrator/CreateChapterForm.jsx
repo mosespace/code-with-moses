@@ -26,7 +26,7 @@ export default function CreateChapterForm({ courses, course }) {
 
   async function onSubmit(data) {
     const courseId = course.id;
-    console.log(courseId);
+    // console.log(courseId);
     data.courseId = courseId;
     // console.log(data);
     makePostRequest(setLoading, "api/chapters", data, "Chapter", reset);
