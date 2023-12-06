@@ -16,6 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <SideBarProvider>
+        <Toaster />
         <body className={raleway.className}>
           <NavBar />
           <div className='flex flex-grow h-screen w-screen overflow-x-hidden'>
@@ -30,7 +31,6 @@ export default function RootLayout({ children }) {
           </div>
           <Footer />
         </body>
-        <Toaster />
       </SideBarProvider>
     </html>
   );
