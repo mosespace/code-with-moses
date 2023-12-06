@@ -16,22 +16,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <SideBarProvider>
-        <Toaster>
-          <body className={raleway.className}>
-            <NavBar />
-            <div className='flex flex-grow h-screen w-screen overflow-x-hidden'>
-              <div className='flex w-full'>
-                <div>
-                  <SideBar />
-                </div>
-                <div className='pt-[4.5rem] lg:ml-[20%] flex-grow w-full min-h-full'>
-                  {children}
-                </div>
+        <body className={raleway.className}>
+          <NavBar />
+          <div className='flex flex-grow h-screen w-screen overflow-x-hidden'>
+            <div className='flex w-full'>
+              <div>
+                <SideBar />
+              </div>
+              <div className='pt-[4.5rem] lg:ml-[20%] flex-grow w-full min-h-full'>
+                {children}
               </div>
             </div>
-            <Footer />
-          </body>
-        </Toaster>
+          </div>
+          <Footer />
+        </body>
+        <Toaster />
       </SideBarProvider>
     </html>
   );
