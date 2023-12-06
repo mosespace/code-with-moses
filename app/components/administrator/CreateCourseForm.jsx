@@ -86,7 +86,6 @@ export default function CreateCourseForm() {
         />
 
         {/* Published*/}
-
         <ToggleInput
           label='Publish your Course'
           name='isPublished'
