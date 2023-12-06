@@ -5,12 +5,7 @@ import Video from "../courses/course/Video";
 import { PiLinkSimple } from "react-icons/pi";
 import { HiPencilAlt } from "react-icons/hi";
 
-export default function VideoURL({
-  label,
-  name,
-  register,
-  id,
-}) {
+export default function VideoURL({ label, name, register, id }) {
   const [videoUrl, setVideoUrl] = useState(
     "https://www.youtube.com/watch?v=LXb3EKWsInQ"
   );
@@ -58,7 +53,7 @@ export default function VideoURL({
                 onChange={(e) => setVideoUrl(e.target.value)}
                 type='url'
                 name={name}
-                id={name}
+                id={id}
                 // defaultValue={id ? course.videoUrl : ""}
                 defaultValue={""}
                 className='bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full pl-10 p-2.5    '
