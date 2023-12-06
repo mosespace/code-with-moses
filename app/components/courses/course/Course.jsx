@@ -26,7 +26,8 @@ export default function Course() {
         </p>
         {session ? (
           <Link
-            href='/course/id'
+            // href='/course/id'
+            href={`/course/${session.user.id}`}
             className='bg-slate-200 text-black font-bold text-center w-full rounded-md px-3 py-3 text-sm'
           >
             Enroll For Free
