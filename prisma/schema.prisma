@@ -78,7 +78,6 @@ model Chapter {
   description  String
   videoUrl     String?
   isPublished  Boolean @default(false)
-  isPaid       Boolean @default(true)
   userProgress UserProgress []
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
