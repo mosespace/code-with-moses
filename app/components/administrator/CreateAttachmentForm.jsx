@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { generateSlug } from "@/utils/generateSlug";
 
-export default function CreateChapterForm({
+export default function CreateAttachmentForm({
   currentCourse,
   course,
   setCurrentCourse,
