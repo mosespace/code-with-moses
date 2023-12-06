@@ -2,7 +2,8 @@
 import CreateForm from "@/app/components/administrator/CreateForm";
 import React from "react";
 
-export default function page() {
+export default function page({ params: { id } }) {
+
   return (
     <div className='lg:py-8 lg:px-4 px-4 py-10 flex items-start justify-center gap-4'>
       {/* <div>

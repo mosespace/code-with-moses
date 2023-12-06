@@ -6,40 +6,52 @@ export async function POST(request) {
   try {
     const {
       title,
+      slug,
+      description,
       imageUrl,
       price,
-      userId,
       isPublished,
-      isFeatured,
-      description,
-      slug,
+      userId,
+      tag,
     } = await request.json();
-    const existingCourse = await db.course.findUnique({
-      where: {
-        slug,
-      },
-    });
 
-    if (existingCourse) {
-      return NextResponse.json(
-        { message: "Slug already exists", error },
-        { status: 409 }
-      );
-    }
+    console.log(
+      title,
+      slug,
+      description,
+      imageUrl,
+      price,
+      isPublished,
+      userId,
+      tag
+    );
+    // const existingCourse = await db.course.findUnique({
+    //   where: {
+    //     slug,
+    //   },
+    // });
+
+    // if (existingCourse) {
+    //   return NextResponse.json(
+    //     { message: "Slug already exists", error },
+    //     { status: 409 }
+    //   );
+    // }
     const newCourse = await db.course.create({
       data: {
         title,
-        price: parseFloat(price),
-        userId,
-        isPublished,
-        isFeatured,
+        slug,
         description,
         imageUrl,
-        slug,
+        price: parseFloat(price),
+        isPublished,
+        tag,
+        userId,
       },
     });
 
     console.log(newCourse);
+
     return NextResponse.json(newCourse, {
       status: 201,
     });

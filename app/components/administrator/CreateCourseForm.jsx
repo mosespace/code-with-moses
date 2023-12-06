@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TextInput from "../Form/TextInput";
+import { Toaster } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import PriceInput from "../Form/PriceInput";
 import ImageInput from "../Form/ImageInput";
@@ -7,17 +8,15 @@ import { useSession } from "next-auth/react";
 import ToggleInput from "../Form/ToggleInput";
 import HashtagInput from "../Form/HashtagInput";
 import SubmitButton from "../Form/SubmitButton";
-import toast, { Toaster } from "react-hot-toast";
 import TextareaInput from "../Form/TextareaInput";
 import { generateSlug } from "@/utils/generateSlug";
+import { makePostRequest } from "@/utils/apiRequest";
 
 export default function CreateCourseForm() {
-  const { data: session } = useSession(); // Destructure session from useSession
+  const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
-  const [Hashtag, setHashtag] = useState([]);
-
-  // console.log(imageUrl);
+  const [tags, setTags] = useState([]);
 
   const {
     handleSubmit,
@@ -27,55 +26,27 @@ export default function CreateCourseForm() {
     formState: { errors },
   } = useForm({});
 
-  if (!session) {
+  if (!session || !session.user) {
     return null;
   }
 
-  const userId = session?.user?.id; // Extract userId from session
-  console.log(userId);
+  const userId = session?.user?.id; // Extracting userId from session
 
-  const isFeatured = watch("isFeatured");
   const isPublished = watch("isPublished");
 
   async function onSubmit(data) {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
     setLoading(true);
-
     const slug = generateSlug(data.title);
     data.slug = slug;
     data.userId = userId;
-    data.description = description;
+    data.tags = tags;
     data.imageUrl = imageUrl;
-    data.price = price;
-    setHashtag([]);
+    setTags([]);
 
-    try {
-      const response = await fetch(`${baseUrl}/api/courses`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        setLoading(false);
-        reset();
-        setImageUrl("");
-        toast.success("Course added to database successfully");
-        const courseData = await response.json();
-        setCurrentCourse(courseData);
-        // console.log(courseData);
-      } else if (response.status === 409) {
-        setLoading(false);
-        toast.error("Course with this title already exists");
-      }
-    } catch (error) {
-      setLoading(false);
-      // console.log(error);
-    }
+    makePostRequest(setLoading, "api/courses", data, "Course", reset);
+    setImageUrl("");
+    // console.log(data);
   }
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className='grid gap-4 sm:grid-cols-2 sm:gap-6'>
@@ -104,11 +75,7 @@ export default function CreateCourseForm() {
           errors={errors}
         />
 
-        <HashtagInput
-          setItems={setHashtag}
-          items={Hashtag}
-          itemTitle='#Hashtags'
-        />
+        <HashtagInput setItems={setTags} items={tags} itemTitle='#Hashtags' />
 
         {/* Course Image */}
         <ImageInput
@@ -117,6 +84,9 @@ export default function CreateCourseForm() {
           endpoint='courseImageUploader'
           label='Course Image'
         />
+
+        {/* Published*/}
+
         <ToggleInput
           label='Publish your Course'
           name='isPublished'
@@ -124,6 +94,8 @@ export default function CreateCourseForm() {
           falseTitle='Draft'
           register={register}
         />
+
+        {/* Submit Button */}
         <SubmitButton
           isLoading={loading}
           buttonTitle='Create Course'

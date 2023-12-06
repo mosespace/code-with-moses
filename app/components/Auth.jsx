@@ -9,8 +9,6 @@ import toast, { Toaster } from "react-hot-toast";
 import MyImage from "../../public/mosespace.jpg";
 
 export default function Auth({ toggleSignInOff }) {
-  const router = useRouter();
-
   return (
     <div className='h-screen bg-white/30 absolute top-0 bottom-0 left-0 right-0 z-[250] w-screen'>
       {/* <!-- modal --> */}
@@ -69,9 +67,7 @@ export default function Auth({ toggleSignInOff }) {
                   >
                     <div className='relative flex items-center space-x-4 justify-center'>
                       <FaGithub className='absolute left-0 w-5 h-5 text-white' />
-                      <span className='block w-max font-semibold tracking-wide text-sm transition text-white duration-300 group-hover:text-blue-600 sm:text-base'>
-                        Continue with Github
-                      </span>
+                      <span className='block w-max font-semibold tracking-wide text-sm transition text-white duration-300 group-hover:text-blue-600 sm:text-base'></span>
                     </div>
                   </button>
                   <button

@@ -5,13 +5,13 @@ export async function makePostRequest(
   setLoading,
   endpoint,
   data,
-  resourceName,
+  postName,
   reset
 ) {
   try {
     setLoading(true);
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-    const response = await fetch(`${baseUrl}/${endpoint}`, {
+    const baseUrl = process.env.NEXTAUTH_URL;
+    const response = await fetch(`http://localhost:3000/${endpoint}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,53 +19,24 @@ export async function makePostRequest(
       body: JSON.stringify(data),
     });
 
+    console.log(response);
+    console.log(data);
+
     if (response.ok) {
       setLoading(false);
-      toast.success(`New ${resourceName} Created Successfully`);
+      toast.success(`New ${postName} Created Successfully`);
       reset();
     } else {
       setLoading(false);
       if (response.status === 409) {
-        toast.error("The Giving Warehouse Stock is NOT Enough");
+        toast.error("Fill In All The Necessary Data");
       } else {
-        toast.error("Something Went wrong");
+        toast.error(`Error: ${response.statusText}`);
+        console.log(response);
       }
     }
   } catch (error) {
     setLoading(false);
-    console.log(error);
-  }
-}
-
-export async function makePutRequest(
-  setLoading,
-  endpoint,
-  data,
-  resourceName,
-  redirect,
-  reset
-) {
-  try {
-    setLoading(true);
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-    const response = await fetch(`${baseUrl}/${endpoint}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    if (response.ok) {
-      // console.log(response);
-      setLoading(false);
-      toast.success(`${resourceName} Updated Successfully`);
-      redirect();
-    } else {
-      setLoading(false);
-      toast.error("Something Went wrong");
-    }
-  } catch (error) {
-    setLoading(false);
-    console.log(error);
+    console.error("Error in makePostRequest:", error);
   }
 }
