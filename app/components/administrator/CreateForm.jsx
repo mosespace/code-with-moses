@@ -4,9 +4,10 @@ import { TbLayoutDashboard, TbClipboard, TbPencil } from "react-icons/tb";
 import CreateCourseForm from "./CreateCourseForm";
 import CreateChapterForm from "./CreateChapterForm";
 
-export default function CreateForm({ courses }) {
+export default function CreateForm({ courses, course }) {
   const [displayedForm, setDisplayedForm] = useState("course");
-  // console.log(displayedForm);
+  // console.log(course);
+
   const tabs = [
     {
       title: "Course Details",
@@ -57,7 +58,7 @@ export default function CreateForm({ courses }) {
         {displayedForm === "course" ? (
           <CreateCourseForm />
         ) : displayedForm === "chapter" ? (
-          <CreateChapterForm courses={courses} />
+          <CreateChapterForm courses={courses} course={course} />
         ) : (
           <CreateCourseForm courses={courses} />
         )}
