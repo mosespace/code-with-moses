@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { TbLayoutDashboard, TbClipboard, TbPencil } from "react-icons/tb";
 import CreateCourseForm from "./CreateCourseForm";
-import CreateChapterForm from "./CreateAttachmentForm";
+import CreateChapterForm from "./CreateChapterForm";
 
 export default function CreateForm({ courses }) {
   const [displayedForm, setDisplayedForm] = useState("course");
