@@ -1,4 +1,3 @@
-// import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 export async function makePostRequest(
@@ -11,7 +10,7 @@ export async function makePostRequest(
   try {
     setLoading(true);
     const baseUrl = process.env.NEXTAUTH_URL;
-    const response = await fetch(`http://localhost:3000/${endpoint}`, {
+    const response = await fetch(`${baseUrl}/${endpoint}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
