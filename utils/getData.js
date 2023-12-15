@@ -1,4 +1,5 @@
 export async function getData(endpoint) {
+  console.log(endpoint);
   try {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
     const response = await fetch(`${baseUrl}/api/${endpoint}`, {
