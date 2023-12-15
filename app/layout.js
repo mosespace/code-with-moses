@@ -15,9 +15,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <SideBarProvider>
-        <Toaster />
-        <body className={raleway.className}>
+      <body className={raleway.className}>
+        <SideBarProvider>
           <NavBar />
           <div className='flex flex-grow h-screen w-screen overflow-x-hidden'>
             <div className='flex w-full'>
@@ -30,8 +29,9 @@ export default function RootLayout({ children }) {
             </div>
           </div>
           <Footer />
-        </body>
-      </SideBarProvider>
+          <Toaster />
+        </SideBarProvider>
+      </body>
     </html>
   );
 }
