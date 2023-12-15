@@ -71,7 +71,7 @@ export async function GET(request) {
       include: {
         chapters: true,
         attachments: true,
-        tags:true,
+        tags: true,
       },
     });
     // console.log(courses)
@@ -79,7 +79,7 @@ export async function GET(request) {
   } catch (error) {
     return NextResponse.json(
       {
-        message: "Failed course",
+        message: "Failed to get back courses",
         error: error.message,
       },
       {
