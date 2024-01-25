@@ -12,7 +12,7 @@ export default function page() {
           <br key='line-break' />,
           "ask questions, and more.",
         ]}
-        link='/discord-link'
+        link='https://discord.gg/V9HAdmFyck'
         linkTitle='Discord'
         icon={RiDiscordLine}
       />
