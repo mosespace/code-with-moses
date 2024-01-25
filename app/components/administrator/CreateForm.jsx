@@ -26,6 +26,7 @@ export default function CreateForm({ courses, course }) {
       icon: TbClipboard,
     },
   ];
+
   function changeDisplayForm(form) {
     setDisplayedForm(form);
   }
@@ -61,7 +62,7 @@ export default function CreateForm({ courses, course }) {
         ) : displayedForm === "chapter" ? (
           <CreateChapterForm courses={courses} course={course} />
         ) : (
-          <CreateAttachmentForm courses={courses} course={course}/>
+          <CreateAttachmentForm courses={courses} course={course} />
         )}
       </div>
     </section>

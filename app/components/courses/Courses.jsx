@@ -3,14 +3,13 @@ import Image from "next/image";
 import { LuBookOpen } from "react-icons/lu";
 
 export default function Courses({ courses }) {
-  console.log(courses);
-
+  // console.log(courses);
   return (
     <div className='grid grid-cols-1 lg:mb-11 gap-2 lg:gap-1 lg:grid-cols-4'>
       {courses?.map((course, i) => (
         <Link
           key={i}
-          href='/course'
+          href={`/course/${course.slug}`}
           className='flex flex-col justify-between hover:bg-slate-200 hover:transition-all px-4 py-3 rounded-md'
           // ref={subContainer}
         >
@@ -36,7 +35,7 @@ export default function Courses({ courses }) {
             </div>
           </div>
           <div>
-            <span className='font-semibold'>{course.price}</span>
+            <span className='font-semibold'>UGX {course.price}</span>
           </div>
         </Link>
       ))}
