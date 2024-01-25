@@ -5,6 +5,7 @@ Welcome to Code With Moses, a project aimed at providing a platform for collabor
 ## Project Overview
 
 - **Live Demo**: [Code With Moses](https://code-with-moses.vercel.app)
+- **Clone 😃**: [Code With Moses](https://www.codewithantonio.com/)
 
 ## Tech Stack
 
@@ -26,21 +27,25 @@ The project has been set up with CRUD operations and MongoDB integration. Prisma
 Follow these steps to set up the project on your local machine:
 
 1. **Clone the Repository:**
+
    ```bash
    git clone https://github.com/your-username/code-with-moses.git
    ```
 
 2. **Navigate to the Project Directory:**
+
    ```bash
    cd code-with-moses
    ```
 
 3. **Install Dependencies:**
+
    ```bash
    yarn install
    ```
 
 4. **Run the Development Server:**
+
    ```bash
    yarn dev
    ```
@@ -63,11 +68,13 @@ We welcome and encourage contributions from the community. To contribute to Code
    Click on the "Fork" button on the top right corner of the repository.
 
 2. **Clone Your Fork:**
+
    ```bash
    git clone https://github.com/your-username/code-with-moses.git
    ```
 
 3. **Create a New Branch:**
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -76,6 +83,7 @@ We welcome and encourage contributions from the community. To contribute to Code
    Make your desired changes and commit them. Please follow the coding standards.
 
 5. **Push Changes to Your Fork:**
+
    ```bash
    git push origin feature/your-feature-name
    ```
