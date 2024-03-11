@@ -53,7 +53,7 @@ export default function SideBar() {
         <StudentSideBar />
       ) : (
         <div className='hidden py-4 lg:flex flex-col gap-4 fixed top-0 bottom-0 left-0 overflow-y-auto no-scrollbar right-0 pt-24 w-[20%] border-r border-slate-300 px-5 text-black'>
-          {pageLinks.map((path, i) => {
+          {pageLinks?.map((path, i) => {
             return (
               <button
                 key={i}

@@ -23,7 +23,7 @@ export default function Footer() {
 
       {/* Login button */}
       <div className='flex items-center gap-4 font-semibold'>
-        {footerLinks.map((link, i) => (
+        {footerLinks?.map((link, i) => (
           <Link key={i} href={link.linkPath}>
             {link.linkTitle}
           </Link>
