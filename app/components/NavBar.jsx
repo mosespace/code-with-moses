@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import SearchForm from "./SearchForm";
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
 import MyImage from "../../public/mosespace.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import { IoMenu, IoClose } from "react-icons/io5";
@@ -11,10 +12,11 @@ import { Dropdown, Avatar } from "flowbite-react";
 import { useSideBar } from "../../Context/Context";
 import { FiLogIn, FiSettings } from "react-icons/fi";
 import { signOut, useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
 
 export default function NavBar() {
   const { data: session } = useSession();
+  // console.log(session);
+
   const [signIn, setSignIn] = useState(false);
   const pathname = usePathname();
 
@@ -31,13 +33,15 @@ export default function NavBar() {
       {/* Desktop NavBar */}
       <nav
         className={`${
-          pathname === "/course/id"
-            ? "hidden lg:flex lg:justify-end fixed top-0 left-0 right-0 z-[230] bg-white items-center gap-[8rem] py-[1.1rem] px-8 border-b border-slate-300 w-full"
+          pathname === `/course/${session?.user.id}`
+            ? "hidden lg:flex lg:justify-between fixed top-0 left-0 right-0 z-[230] bg-white items-center gap-[8rem] py-[1.1rem] px-8 border-b border-slate-300 w-full"
             : "hidden lg:flex fixed top-0 left-0 right-0 z-[230] bg-white items-center gap-[8rem] py-[1.1rem] px-8 border-b border-slate-300 w-full"
         } lg:items-end`}
       >
-        {pathname === "/course/id" ? (
-          ""
+        {pathname === `/course/${session?.user.id}` ? (
+          <div className=' text-2xl uppercase items-center flex gap-3 font-bold'>
+            Admin Dashboard
+          </div>
         ) : (
           <div className='font-semibold text-lg tracking-wide items-center flex gap-3'>
             <Image
@@ -50,8 +54,9 @@ export default function NavBar() {
             <h2 className='font-bold'>CodeWithMoses</h2>
           </div>
         )}
+
         {/* Search Form */}
-        {pathname === "/course/id" ? "" : <SearchForm />}
+        {pathname === `/course/${session?.user.id}` ? "" : <SearchForm />}
         {/* Login button */}
         {session ? (
           <>

@@ -12,7 +12,7 @@ export default function page() {
           <br key='line-break' />,
           "applications!",
         ]}
-        link='/discord-link'
+        link='https://youtube.com/@Coding4Life'
         linkTitle='Apply Today'
         icon={HiOutlineAcademicCap}
       />

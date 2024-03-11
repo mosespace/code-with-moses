@@ -1,6 +1,7 @@
 import "../Styles/globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import { Toaster } from "react-hot-toast";
 import { Raleway } from "next/font/google";
 import SideBar from "./components/SideBar";
 import { SideBarProvider } from "../Context/Context";
@@ -14,8 +15,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <SideBarProvider>
-        <body className={raleway.className}>
+      <body className={raleway.className}>
+        <SideBarProvider>
           <NavBar />
           <div className='flex flex-grow h-screen w-screen overflow-x-hidden'>
             <div className='flex w-full'>
@@ -28,8 +29,9 @@ export default function RootLayout({ children }) {
             </div>
           </div>
           <Footer />
-        </body>
-      </SideBarProvider>
+          <Toaster />
+        </SideBarProvider>
+      </body>
     </html>
   );
 }
