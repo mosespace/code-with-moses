@@ -9,7 +9,7 @@ export default function Courses({ courses }) {
       {courses?.map((course, i) => (
         <Link
           key={i}
-          href={`/course/${course.slug}`}
+          href={`/c/${course.slug}`}
           className='flex flex-col justify-between hover:bg-slate-200 hover:transition-all px-4 py-3 rounded-md'
           // ref={subContainer}
         >

@@ -11,10 +11,7 @@ export default function Video({ src }) {
         aspectRatio='16/9'
         title='Sprite Fight'
         controls
-        src={
-          src ||
-          "https://www.src.com/watch?v=7rOMr_dz5so&pp=ygUSbmFuYSBqb3NodWEgYmFyYWth"
-        }
+        src={src || "https://www.youtube.com/watch?v=yci475Vwc10"}
       >
         <MediaProvider />
       </MediaPlayer>

@@ -6,17 +6,19 @@ import { getData } from "@/utils/getData";
 export default async function page({ params: { slug } }) {
   // console.log(slug);
 
-  const courses = await getData("courses");
+  const course = await getData("courses");
 
-  const course = courses.filter((course) => course.slug === slug);
+  const filteredCourse = course?.find((course) => course.slug === slug);
+  // console.log(course);
 
-  const videoPreview = course.videoUrl;
+  const videoPreview = filteredCourse?.videoUrl;
+  // console.log(videoPreview);
   return (
     <div className='lg:py-8 lg:px-4 px-4'>
       <div className='flex px-0 flex-col lg:grid lg:grid-flow-col gap-4 lg:gap-8 overflow-hidden'>
         <div className='row-span-full isolate flex flex-col overflow-hidden w-full lg:gap-4 lg:mb-8'>
           <Video src={videoPreview} />
-          <Description course={course} />
+          <Description course={filteredCourse} />
         </div>
 
         <div className='row-span-auto'>
