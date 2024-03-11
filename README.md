@@ -4,7 +4,7 @@ Welcome to Code With Moses, a project aimed at providing a platform for collabor
 
 ## Project Overview
 
-- **Live Demo**: [Code With Moses](https://code-with-moses.vercel.app)
+- **Live Demo**: [Code With Moses](https://codewithmoses.mosespace.com/)
 - **Clone 😃**: [Code With Moses](https://www.codewithantonio.com/)
 
 ## Tech Stack

@@ -22,14 +22,3 @@
 .bg-radial-gradient {
   background-image: radial-gradient(circle, #0c4a6e, #082f49, #111827);
 }
-
-/* .player-wrapper {
-  position: relative;
-  padding-top: 56.25%;
-}
-
-.react-player {
-  position: absolute;
-  top: 0;
-  left: 0;
-} */
